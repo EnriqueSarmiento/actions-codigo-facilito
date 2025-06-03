@@ -11,8 +11,10 @@ jobs:
         run: echo "Hola mundo desde GithuActions"
 
   second_job:
-    ## condicionales para determinar si un job se corre o no
-    if: false
+    ## contextos - nos sirven para tener informacion del workflow en todos los aspectos
+    ## condicionales para determinar si un job se corre o no, solo se puede agregar un if por job.
+    ## en este caso tenemos u condicional que emplea el contexto, donde solo se corre este segundo job solo si se esta trabajando en la rama main.
+    if: ${{ github.ref == 'refs/heads/main' }}
     ## este job necesita el primer job, se usa la directiva de needs donde le valor es el number del otro job.
     needs: first_job
     runs-on: ubuntu-latest
