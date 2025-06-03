@@ -5,10 +5,13 @@ on: push
 jobs:
   first_job:
     runs-on: ubuntu-latest
+    ## se pueden declarar variables de entorno.
+    env:
+      NAME: CodigoFacilito
 
     steps:
       - name: Hola mundo
-        run: echo "Hola mundo desde GithuActions"
+        run: echo "Hola mundo desde GithuActions $NAME"
 
   second_job:
     ## contextos - nos sirven para tener informacion del workflow en todos los aspectos
