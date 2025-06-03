@@ -11,6 +11,8 @@ jobs:
         run: echo "Hola mundo desde GithuActions"
 
   second_job:
+    ## condicionales para determinar si un job se corre o no
+    if: false
     ## este job necesita el primer job, se usa la directiva de needs donde le valor es el number del otro job.
     needs: first_job
     runs-on: ubuntu-latest
