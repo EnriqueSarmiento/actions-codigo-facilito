@@ -11,8 +11,10 @@ jobs:
         run: echo "Hola mundo desde GithuActions"
 
   second_job:
+    ## este job necesita el primer job, se usa la directiva de needs donde le valor es el number del otro job.
+    needs: first_job
     runs-on: ubuntu-latest
 
     steps:
       - name: Segundo Hola mundo
-        run: echo "Hola Mundo de nuevo"
+        run: echo "Hola Mundo de nuevo, usando directiva para necesitar el primer job "
