@@ -21,4 +21,6 @@ jobs:
 
     steps:
       - name: Segundo Hola mundo
-        run: echo "Hola Mundo de nuevo, usando directiva para necesitar el primer job "
+        ## Tambien se pueden condicionar los steps
+        ## if: false
+        run: echo "Hola Mundo de nuevo, usando directiva para necesitar el primer job ${{ github.ref }}"
