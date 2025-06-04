@@ -69,4 +69,4 @@ jobs:
         run: echo "Hola Mundo de nuevo, usando directiva para necesitar el primer job ${{ github.ref }}"
 
       - name: Imprimir la info del primer job
-        run: echo ${{ SALIDA }}
+        run: echo $SALIDA
