@@ -11,7 +11,15 @@ jobs:
 
     steps:
       - name: Hola mundo
+        ## imprimiendo la variable de entorno name.
         run: echo "Hola mundo desde GithuActions $NAME"
+
+      - name: working dir
+        run: ls -al
+
+      - name: Action
+        ## se usas la directiva uses para especificar que se usara ya un action definido, en este caso usaremos una de github actions. pero hay un marketplace
+        uses: actions/checkout@v4
 
   second_job:
     ## contextos - nos sirven para tener informacion del workflow en todos los aspectos
