@@ -21,10 +21,24 @@ jobs:
       - name: Action
         ## se usas la directiva uses para especificar que se usara ya un action definido, en este caso usaremos una de github actions. pero hay un marketplace
         uses: actions/checkout@v4
+        ## la directiva with nos permite pasarle parametros a el action que estemes usando. coo php version, version python, etc. Depende de cada action documentacion.
+        # with:
+        #   hola: 12
 
       - name: working dir despues del action
         ## aqui ya salen carpetas
         run: ls -al
+
+      - name: Compartir info entre jobs
+        ## HAY UNA VARIABLE DE ENTORNO DE GITHUB ACTIONS
+        run: echo $GITHUB_OUTPUT
+
+      - name: Concatenar un valor a una variable de entorno
+        run: echo "my_variable=Hola mundo" >> $GITHUB_OUTPUT
+
+      - name: imprimir la variable
+        ## aqui ya tiene otro valoe
+        run: echo $GITHUB_OUTPUT
 
   second_job:
     ## contextos - nos sirven para tener informacion del workflow en todos los aspectos
