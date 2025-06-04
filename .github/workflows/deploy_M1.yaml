@@ -9,6 +9,10 @@ jobs:
     env:
       NAME: CodigoFacilito
 
+    outputs:
+      ## aqui podmeos asignar un output dependiendoen de un step
+      salida_del_first_job: ${{ steps.step_6.outputs.my_variable }}
+
     steps:
       - name: Hola mundo
         ## imprimiendo la variable de entorno name.
@@ -35,7 +39,7 @@ jobs:
 
       - name: Concatenar un valor a una variable de entorno
         id: step_6
-        run: echo "my_variable=Hola mundo" >> $GITHUB_OUTPUT
+        run: echo "my_variable=Esta es un contenido de variable que quiero compartir" >> $GITHUB_OUTPUT
 
       - name: imprimir la variable
         ## aqui ya tiene otro valoe
@@ -54,8 +58,15 @@ jobs:
     needs: first_job
     runs-on: ubuntu-latest
 
+    ## tener informacion de otro job, o referencias en este caso tendremos los outputs
+    env:
+      SALIDA: ${{ needs.first_job.outputs.salida_del_first_job }}
+
     steps:
       - name: Segundo Hola mundo
         ## Tambien se pueden condicionar los steps
         ## if: false
         run: echo "Hola Mundo de nuevo, usando directiva para necesitar el primer job ${{ github.ref }}"
+
+      - name: Imprimir la info del primer job
+        run: echo ${{ SALIDA }}
