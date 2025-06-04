@@ -6,7 +6,9 @@ jobs:
   first_job:
     runs-on: ubuntu-latest
 
-    #3 es una directiva que nos permite correr un job multiples veces con diferentes caracteristicas.
+    ## es una directiva que nos permite correr un job multiples veces con diferentes caracteristicas.
+    ## basicamente es una matrix y se pueden crear muchas configuraciones.
+    ## eg, probar un build con python en windows, probar build con typescript en macos, etc.
     strategy:
       matrix:
         message:
