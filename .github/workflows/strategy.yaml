@@ -1,0 +1,18 @@
+name: Deploy to server 3
+
+on: push
+
+jobs:
+  first_job:
+    runs-on: ubuntu-latest
+
+    #3 es una directiva que nos permite correr un job multiples veces con diferentes caracteristicas.
+    strategy:
+      matrix:
+        message:
+          ["Hola", "Enrique Codigo Facilito", "Bootcamp Github Actions class"]
+
+    steps:
+      - name: Print mensaje
+        ## como va aobtener le conytexto de matrix y la variable message es un array o lista de trs elemtnso, entonces este run se correra tres veces e imprimira cada uno de los elementos en messages.
+        run: echo "${{ matrix.message }}"
