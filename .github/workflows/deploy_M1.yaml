@@ -34,11 +34,16 @@ jobs:
         run: echo $GITHUB_OUTPUT
 
       - name: Concatenar un valor a una variable de entorno
+        id: step_6
         run: echo "my_variable=Hola mundo" >> $GITHUB_OUTPUT
 
       - name: imprimir la variable
         ## aqui ya tiene otro valoe
         run: echo $GITHUB_OUTPUT
+
+      - name: Referencia de un step para obtener el valor de su output
+        ## aqui obtenemos el output del step_6, es importante que el step tenga un id para mantener concistencia en al informacion.
+        run: echo ${{ steps.step_6.outputs.my_variable }}
 
   second_job:
     ## contextos - nos sirven para tener informacion del workflow en todos los aspectos
