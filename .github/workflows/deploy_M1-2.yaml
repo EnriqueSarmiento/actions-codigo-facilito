@@ -20,6 +20,9 @@ jobs:
   second_job:
     runs-on: ubuntu-latest
 
+    ## crear dependencia para que el job se corra despues de primero y tener el archivo generado. sino dara error porque el artifact no existe
+    needs: first_job
+
     steps:
       - name: Descagar el artefacto
         uses: actions/download-artifact@v4
